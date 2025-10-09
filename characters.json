@@ -1,0 +1,123 @@
+[
+    {
+      "id": "01",
+      "name": "有栖川 瑛司",
+      "katakana": "ありすがわ えいし",
+      "imageUrl": "https://images.plurk.com/3hCFMcLhOjHv4HaN32f7RA.png",
+      "description": "肥皂學校 HO1 老師的視線很冰冷",
+      "pageUrl": "characters/ayla.html"
+    },
+    {
+      "id": "02",
+      "name": "五十嵐 有也",
+      "katakana": "いがらし",
+      "imageUrl": "https://images.plurk.com/59qq3m2qLOK1hpDn0LWhqB.png",
+      "description": "避世鎮 HO1 壱番地の標本",
+      "pageUrl": "characters/boris.html"
+    },
+    {
+      "id": "03",
+      "name": "千歲綠",
+      "katakana": "せんさい みどり",
+      "imageUrl": "https://images.plurk.com/7MXMYx4rPSrAg68DeH2u3Y.png",
+      "description": "VOID HO2 新型仿生人",
+      "pageUrl": "characters/celia.html"
+    },
+    {
+        "id": "04",
+        "name": "藥師寺 蒼",
+        "katakana": "せんさい みどり",
+        "imageUrl": "https://images.plurk.com/32BZghoAjhWf8AY5HM3MWe.png",
+        "description": "VOID HO2 新型仿生人",
+        "pageUrl": "characters/celia.html"
+      },
+      
+      {
+        "id": "06",
+        "name": "八宮 八方",
+        "katakana": "やみや はっぽう",
+        "imageUrl": "https://images.plurk.com/5G6iIfA6PkNBnMYe9VE5ap.png",
+        "description": "蟹蟹詐欺",
+        "pageUrl": "characters/celia.html"
+      },
+      {
+        "id": "07",
+        "name": "竹筱宮 裏柳",
+        "katakana": "たけのみや りりゅう",
+        "imageUrl": "https://images.plurk.com/o4vxFOPzgIp1WkuSMlqJh.png",
+        "description": "帕拉諾伊亞風忍者 HO竹",
+        "pageUrl": "characters/celia.html"
+      },
+      {
+        "id": "08",
+        "name": "二之夕 千篁",
+        "katakana": "にのせき せんこう",
+        "imageUrl": "https://images.plurk.com/7s1DJrxm7qG35jaYvBzRjE.png",
+        "description": "庭師所吟之物為何 HO2",
+        "pageUrl": "characters/celia.html"
+      },
+      {
+        "id": "09",
+        "name": "月見里 一槻",
+        "katakana": "やまなし いつき",
+        "imageUrl": "https://images.plurk.com/51kXQjMYvxUkTJGsAu8B5A.png",
+        "description": "愛罠蜂 HO2 打工人",
+        "pageUrl": "characters/celia.html"
+      },
+      {
+        "id": "10",
+        "name": "青天目 天黎",
+        "katakana": "なばため てんれい",
+        "imageUrl": "https://images.plurk.com/6zec9hwMTbBFmvx2Q2g8Yz.png",
+        "description": "怪物與綺想教團 HO2 魔女",
+        "pageUrl": "characters/celia.html"
+      },
+      {
+        "id": "11",
+        "name": "不知火 一颯",
+        "katakana": "しらぬい いぶき",
+        "imageUrl": "https://images.plurk.com/6jEhNm75OMU8LBjbLkPVe7.png",
+        "description": "天啓劫火 HO4 自由",
+        "pageUrl": "characters/celia.html"
+      },
+      {
+        "id": "12",
+        "name": "阿爾弗雷克",
+        "katakana": "あるふれく",
+        "imageUrl": "https://images.plurk.com/yxsnpwWBYTaoGwxq9POvP.png",
+        "description": "獻給你靈魂的群鳥",
+        "pageUrl": "characters/celia.html"
+      },
+      {
+        "id": "13",
+        "name": "三分一 要",
+        "katakana": "さんぶいち かなめ",
+        "imageUrl": "https://images.plurk.com/AlxnhHDoPoagGz0gFZKZQ.png",
+        "description": "全裸因習村 HO1",
+        "pageUrl": "characters/celia.html"
+      },
+      {
+        "id": "14",
+        "name": "太刀川 朱祇",
+        "katakana": "たちかわ しゅぎ",
+        "imageUrl": "https://images.plurk.com/1xKRA8x3dSoNhFPdY027lh.png",
+        "description": "ロトカ・ヴォルテラの愛堕討ち HO1 極道者",
+        "pageUrl": "characters/celia.html"
+      },
+      {
+        "id": "15",
+        "name": "逢夜 烈火",
+        "katakana": "あおや れっか",
+        "imageUrl": "https://images.plurk.com/35JcHDsQWnRcc1irP6Otwo.png",
+        "description": "熬夜人戰爭 HO3",
+        "pageUrl": "characters/celia.html"
+      },
+      {
+        "id": "16",
+        "name": "祓川 柊夜",
+        "katakana": "はらいがわ しゅうや",
+        "imageUrl": "https://images.plurk.com/8sSYdT054LiqCnggNrGox.png",
+        "description": "鰯と柊 HO2 信者",
+        "pageUrl": "characters/celia.html"
+      }
+  ]
