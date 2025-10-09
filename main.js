@@ -3,19 +3,16 @@
 // 等待整個 HTML 文件都載入並解析完畢後再執行
 document.addEventListener("DOMContentLoaded", function() {
 
-    // --- 任務一：載入共通導覽列 (之前的程式碼) ---
-    const navPlaceholder = document.getElementById("navbar-placeholder");
-    if (navPlaceholder) {
-        fetch('../_includes/navigation.html')
-            .then(response => response.ok ? response.text() : Promise.reject('Failed to load nav'))
-            .then(data => {
-                navPlaceholder.innerHTML = data;
-            })
-            .catch(error => {
-                console.error('Error fetching navigation bar:', error);
-                navPlaceholder.innerHTML = "<p style='color:red;'>導覽列載入失敗！</p>";
-            });
-    }
+    // --- 任務：載入共通導覽列 ---
+const navPlaceholder = document.getElementById("navbar-placeholder");
+if (navPlaceholder) {
+    // 判斷是否在 characters 子目錄中
+    const navPath = window.location.pathname.includes('/characters/') 
+        ? '../_includes/navigation.html' 
+        : '_includes/navigation.html';
+    fetch(navPath)
+        .then(/* ... */);
+}
 
     // --- 【新增】任務二：如果在首頁，就載入角色列表 ---
     const characterListContainer = document.getElementById("character-list-container");
@@ -73,22 +70,16 @@ document.addEventListener("DOMContentLoaded", function() {
                 characterListContainer.innerHTML = "<p style='color:red;'>角色資料載入失敗！請檢查 console 裡的錯誤訊息。</p>";
             });
     }
-    // --- 任務三：載入共通頁尾 ---
+    // --- 任務：載入共通頁尾 ---
 const footerPlaceholder = document.getElementById("footer-placeholder");
 if (footerPlaceholder) {
-    
-    // 直接使用絕對路徑，不再需要判斷
-    const path = '/_includes/footer.html'; 
-
-    fetch(path)
-        .then(response => response.ok ? response.text() : Promise.reject('Failed to load footer'))
-        .then(data => {
-            footerPlaceholder.innerHTML = data;
-        })
-        .catch(error => {
-            console.error('Error fetching footer:', error);
-            footerPlaceholder.innerHTML = "<p style='text-align:center; color:red;'>頁尾載入失敗！</p>";
-        });
+    // 判斷是否在 characters 子目錄中
+    const footerPath = window.location.pathname.includes('/characters/') 
+        ? '../_includes/footer.html' 
+        : '_includes/footer.html';
+    fetch(footerPath)
+        .then(/* ... */);
 }
 
 });
+
