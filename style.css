@@ -11,13 +11,18 @@ body {
 
 /* === 2. 入口頁 (Portal Page) 專屬樣式 === */
 .page-portal {
+    padding-top: 40px;
+    padding-bottom: 40px; 
+}
+/* 你可以把你之前入口頁的所有樣式 (如 .portal-container, .profile-pic) 放在這裡 */
+/* 將 Flexbox 置中樣式應用到新的包裝層上 */
+.page-portal .portal-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    padding: 20px 0; /* 置中頁面不需要內邊距 */
+    min-height: calc(100vh - 120px); /* 計算一個大致的高度，給頁首頁尾留空間 */
+    width: 100%;
 }
-/* 你可以把你之前入口頁的所有樣式 (如 .portal-container, .profile-pic) 放在這裡 */
 /* 入口頁的主容器 */
 .page-portal .portal-container {
     max-width: 600px;
@@ -399,4 +404,63 @@ body {
 }
 .back-button:hover {
     background-color: #856b22;
+}
+
+/* === 6. 共通頁尾 (Site Footer) 樣式 === */
+.site-footer {
+    width: 90%;
+    margin-top: 50px; /* 與上方主要內容隔開足夠的距離 */
+    padding: 30px 60px;
+    background-color: #80745a; /* 一個比主背景稍深的顏色 */
+    border-top: 1px solid #cbd5e0; /* 頂部分隔線 */
+    color: #e9ebed;
+}
+
+.footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap; /* 在小螢幕時允許換行 */
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 30px;
+}
+
+.version-log {
+    text-align: left;
+}
+
+.version-log h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #a0aec0;
+    padding-bottom: 5px;
+}
+
+.version-log ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.9em;
+}
+
+.version-log li {
+    margin-bottom: 5px;
+}
+
+.copyright {
+    text-align: right;
+    font-size: 0.9em;
+    align-self: flex-end; /* 讓版權說明文字對齊底部 */
+}
+
+/* 在小螢幕上，讓所有內容都靠左對齊 */
+@media (max-width: 600px) {
+    .footer-content {
+        flex-direction: column;
+    }
+    .copyright {
+        text-align: left;
+        margin-top: 20px;
+    }
 }
