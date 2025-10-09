@@ -2,14 +2,14 @@
 body {
     font-family: 'Noto Sans TC', sans-serif;
     background-color: #f4f1e9;
-    color: #333;
+    color: #6c4141;
     line-height: 1.6;
     margin: 20px;
 }
 
 /* 角色卡片的主容器 */
 .character-sheet {
-    max-width: 800px;
+    max-width: 70%;
     margin: 0 auto;
     background-color: #fff;
     border: 1px solid #ccc;
@@ -20,9 +20,9 @@ body {
 
 /* 頂部標頭 */
 header {
-    background-color: #4a5568;
-    color: #fff;
-    padding: 20px;
+    background-color: #e0be5f;
+    color: #4a4a4a;
+    padding: 10px;
     text-align: center;
 }
 
@@ -44,26 +44,49 @@ main {
 /* 區塊標題 */
 h2 {
     font-size: 1.8em;
-    color: #2d3748;
-    border-bottom: 2px solid #718096;
+    color: #4a4a4a;
+    border-bottom: 2px solid #957a2f;
     padding-bottom: 10px;
     margin-bottom: 15px;
 }
 
-/* 個人簡介區塊 */
+/* === 角色詳細頁面的樣式修改 === */
+
+/* 新增：角色片假名的樣式 */
+.char-katakana {
+    font-size: 1.2em;
+    color: #e2e8f0; /* 使用一個比純白稍暗的顏色，增加層次感 */
+    opacity: 0.9;
+    margin-top: 5px; /* 和中文名字之間拉開一點距離 */
+    font-family: 'Noto Sans JP', sans-serif; /* 如果想用日文字體可以加上 */
+}
+
+/* 修改：個人簡介區塊的容器 */
 .profile {
-    display: flex;
-    gap: 20px;
+    display:flex;
+    flex-wrap: wrap; /* 在小螢幕時允許換行 */
+    gap: 80px;
     margin-bottom: 20px;
 }
 
-.char-image img {
-    width: 200px;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 50%; /* 讓圖片變圓形 */
-    border: 3px solid #718096;
+/* 修改：角色立繪的圖片容器 */
+.char-image {
+    /* 讓圖片容器有彈性，但最大不會超過圖片寬度 */
+    flex: 1 1 250px;
+    text-align: center /* 讓圖片在容器內置中 */
 }
+
+/* 修改：角色立繪圖片本身的樣式 */
+.char-image img {
+    max-width: 20%; /* 圖片最寬不會超過其容器 */
+    height: auto; /* 高度自動，以保持圖片原始比例 */
+    object-fit: cover;
+    border-radius: 8px; /* 【關鍵修改】從 50% 改成 8px，變成圓角矩形 */
+    border: 3px solid #718096;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* 加一點陰影讓圖片更立體 */
+}
+
+
 
 .char-bio {
     flex: 1;
@@ -96,66 +119,141 @@ h2 {
     text-indent: 2em; /* 段落開頭縮排 */
 }
 
-/* === 新增的角色列表網格樣式 === */
+/* === 全新的角色列表翻轉卡片樣式 === */
 
-/* 列表容器 (ul) - 設定為 Flexbox 佈局 */
+/* 列表容器 (ul) - Flexbox 網格佈局 */
 .character-list ul {
-    list-style: none; /* 移除列表前面的小黑點 */
+    list-style: none;
     padding: 0;
-    display: flex; /* 啟用 Flexbox 佈局 */
-    flex-wrap: wrap; /* 允許項目換行 */
-    gap: 20px; /* 設定項目之間的間距 */
-    justify-content: center; /* 當一行未滿時，讓項目置中 */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px; /* 加大一點間距 */
+    justify-content: center;
 }
 
 /* 每個列表項目 (li) - 計算寬度以實現一列四個 */
 .character-list li {
-    /* 100% / 4 = 25%。再減去一些空間給 gap */
-    width: calc(25% - 20px);
+    width: calc(25% - 25px);
+    position: relative; /* 為 z-index 生效提供定位上下文 */
+    transition: transform 0.3s ease; /* 為下面的放大效果增加平滑過渡 */
 }
 
-/* 連結區塊 (a) - 讓它成為內容的容器 */
-.character-list li a {
-    display: flex; /* 再次使用 Flexbox，但這次是為了內部垂直排列 */
-    flex-direction: column; /* 將排列方向改為垂直 (從上到下) */
-    align-items: center; /* 水平置中 (頭像和名字) */
-    text-decoration: none; /* 移除連結底線 */
-    color: #2d3748;
-    padding: 15px;
+/* 【新增】當滑鼠懸停在 li 上時，提升其層級並稍微放大 */
+.character-list li:hover {
+    transform: scale(1); /* 讓卡片稍微放大，感覺更突出 */
+    z-index: 10; /* 將層級提升到最高，蓋過其他卡片 */
+}
+
+/* 翻轉卡片最外層容器 */
+.flip-card {
+    background-color: transparent;
+    width: 100%;
+    height: 250px; /* 【重要】給卡片一個固定的高度 */
+    perspective: 1000px; /* 建立 3D 透視效果，這個值越大，3D 效果越不明顯 */
+}
+
+/* 內部翻轉的容器 */
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.7s; /* 翻轉動畫的持續時間 */
+    transform-style: preserve-3d; /* 啟用 3D 空間 */
+}
+
+/* 🚨 當滑鼠懸停在 .flip-card 上時，翻轉 .flip-card-inner */
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg); /* 沿著 Y 軸翻轉 180 度 */
+}
+
+/* 正面和背面的通用樣式 */
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari 瀏覽器支援 */
+    backface-visibility: hidden; /* 【關鍵】隱藏元素的背面，這是實現翻轉效果的核心 */
     border-radius: 8px;
-    background-color: #edf2f7;
-    transition: transform 0.3s, box-shadow 0.3s;
-    height: 100%; /* 讓 a 填滿整個 li 的高度 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-/* 滑鼠懸停效果 */
-.character-list li a:hover {
-    transform: translateY(-5px); /* 向上移動一點 */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+/* 正面樣式 */
+.flip-card-front {
+    background-color: #e0be5fbe;
+    color: #4a4a4a;
 }
-
-/* 頭像圖片 (img) */
-.character-list img {
-    width: 120px; /* 設定頭像寬度 */
-    height: 120px; /* 設定頭像高度 */
-    border-radius: 50%; /* 讓圖片變成圓形 */
-    object-fit: cover; /* 如果圖片比例不對，會自動裁切覆蓋，而不是變形 */
+.flip-card-front img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
     border: 3px solid #cbd5e0;
-    margin-bottom: 10px; /* 圖片和名字之間的距離 */
+    margin-bottom: 10px;
 }
-
-/* 角色名稱 (span) */
-.character-list span {
+.flip-card-front span {
     font-weight: bold;
     font-size: 1.1em;
 }
 
+/* 背面樣式 */
+.flip-card-back {
+    background-color: #e0be5f; /* 給背面一個深色背景 */
+    color: #4a4a4a;
+    padding: 20px;
+    transform: rotateY(180deg); /* 【關鍵】讓背面一開始就預先翻轉 180 度 */
+}
+.flip-card-back h2 {
+    font-size: 1.3em;
+    border-bottom: 1px solid #718096;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+.flip-card-back p {
+    font-size: 0.9em;
+    text-align: center;
+}
+.details-button {
+    margin-top: 15px;
+    padding: 8px 15px;
+    background-color: #f7fafc;
+    color: #2d3748;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 0.9em;
+    transition: background-color 0.3s;
+}
+.details-button:hover {
+    background-color: #cbd5e0;
+}
 
-/* === 針對小螢幕的響應式設計 (可選，但強烈建議) === */
-/* 當螢幕寬度小於 768px (例如手機) 時 */
+
+/* 響應式設計：小螢幕時變為一列兩個 */
 @media (max-width: 768px) {
     .character-list li {
-        /* 一行顯示兩個 */
-        width: calc(50% - 20px);
+        width: calc(50% - 25px);
     }
+}
+
+/* === 共通導覽列樣式 === */
+.main-nav {
+    max-width: 800px;
+    margin: 0 auto 15px auto; /* 上0, 左右自動, 下15px */
+}
+
+.back-button {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: #4a5568;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 0.9em;
+    transition: background-color 0.3s;
+}
+
+.back-button:hover {
+    background-color: #856b22;
 }
