@@ -3,36 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YY家的跑團集中</title>
-    <!-- 這個檔案在根目錄，所以路徑不需要改 -->
+    <title>御郢 aka 𝕐𝕐</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="page-portal">
 
-    <div class="character-sheet">
-        <header>
-            <div class="char-name">YY家的跑團集中</div>
-            <div class="player-info">
-                <span>記錄PC用的地方</span>
+    <div class="portal-container">
+        <!-- 自我介紹區塊 -->
+        <header class="intro">
+            <img src="https://images.plurk.com/1runEYf1Ud7glkIN07zV26.png " alt="你的頭像" class="profile-pic">
+            <h1>御郢 aka 𝕐𝕐</h1>
+            <span>TRPG/噗浪企畫/原創</span>
+            <div class="intro-details">
+                <p>ㄩㄧ或YY隨便叫我認得出來就好。</p>
+                <p>喜歡對熟人講幹話or油話</p>
+                <p>但如果還不太熟的人對我講幹話我就會跟你講幹話</p>
+                <p>然後我們就會變成好朋友(比讚</p>
+                    
+                <p>佛系畫圖。</p>
+                <p>尊包友，有禮貌就可以了</p>
+                <p>頭貼/我哥</p>
+                    
+                <p>代表物是蔥，我都叫他蔥神</p>
+                <p>應該會很常看到它(比讚</p>
             </div>
         </header>
 
-        <main>
-            <section class="character-list">
-                <h2>角色列表</h2>
-                <!-- 
-                    【關鍵修改】
-                    我們把原本手寫的 li 全部刪除，
-                    只留下一個空的 ul 作為容器，並給它一個 ID。
-                    JavaScript 將會把生成的角色卡片塞到這裡。
-                -->
-                <ul id="character-list-container">
-                    <!-- 初始顯示載入中的提示 -->
-                    <p>正在載入角色資料...</p>
-                </ul>
-            </section>
-</main>
+        <!-- 連結按鈕區塊 -->
+        <main class="links">
+            <ul>
+                <li>
+                    <a href="yytrpg.html" class="link-button">TRPG 角色集中</a>
+                </li>
+                <li>
+                    <a href="https://www.plurk.com/yy_yuying86" target="_blank" rel="noopener noreferrer" class="link-button">噗浪 (Plurk)</a>
+                </li>
+                <li>
+                    <a href="https://x.com/yy86_yuying" target="_blank" rel="noopener noreferrer" class="link-button">X (Twitter)</a>
+                </li>
+                <!-- 如果還有其他連結，可以複製 li 項目繼續往下加 -->
+            </ul>
+            <div class="portal-image">
+                <img src="https://images.plurk.com/3JTmxd6WfIVL1IYv457VU8.png" alt="你想要放置的圖片描述">
+            </div>
+        </main>
     </div>
-    <script src="main.js" defer></script>
+
 </body>
 </html>

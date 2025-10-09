@@ -1,14 +1,166 @@
-/* 基本的頁面重設和字體設定 */
+/* === 1. 全域與基本樣式 (所有頁面共用) === */
 body {
     font-family: 'Noto Sans TC', sans-serif;
     background-color: #f4f1e9;
-    color: #6c4141;
+    color: #333;
     line-height: 1.6;
-    margin: 20px;
+    margin: 0; /* 移除預設的 margin */
+    padding: 20px; /* 使用 padding 來製造頁面邊距 */
 }
 
-/* 角色卡片的主容器 */
-.character-sheet {
+
+/* === 2. 入口頁 (Portal Page) 專屬樣式 === */
+.page-portal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px 0; /* 置中頁面不需要內邊距 */
+}
+/* 你可以把你之前入口頁的所有樣式 (如 .portal-container, .profile-pic) 放在這裡 */
+/* 入口頁的主容器 */
+.page-portal .portal-container {
+    max-width: 600px;
+    width: 90%;
+    background-color: #e0be5f;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* 個人頭像 */
+.page-portal .profile-pic {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    margin-bottom: 15px;
+}
+
+/* 名字和自我介紹 */
+.page-portal .intro h1 {
+    font-size: 2em;
+    color: #2d3748;
+    margin-bottom: 10px;
+}
+
+.page-portal .intro p {
+    font-size: 1em;
+    color: #4a5568;
+    line-height: 0;
+    margin-bottom: 30px;
+}
+.page-portal .links {
+    margin-top: 30px; /* 確保按鈕區塊與上方有足夠的間距 */
+}
+
+/* 連結列表 */
+.page-portal .links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 30px 0; /* 在列表下方增加一些邊距，與圖片隔開 */
+    display: flex; /* 啟用 Flexbox */
+    justify-content: center; /* 讓按鈕在容器中水平置中 */
+    flex-wrap: wrap; /* 在小螢幕時如果空間不夠，允許按鈕換行 */
+    gap: 15px; /* 設定按鈕之間的間距 */
+}
+
+.page-portal .links li {
+    margin-bottom: 0; /* 移除原本的垂直邊距，因為 gap 已經處理了間距 */
+}
+
+/* 連結按鈕的樣式 */
+.page-portal .link-button {
+    display: block;
+    padding: 15px;
+    background-color: #4a5568;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.page-portal .link-button:hover {
+    background-color: #2d3748;
+    transform: scale(1.03); /* 滑鼠懸停時輕微放大 */
+}
+/* 下方圖片的容器和樣式 */
+.page-portal .portal-image {
+    margin-top: 30px; /* 與上方按鈕區隔開 */
+}
+
+.page-portal .portal-image img {
+    max-width: 100%; /* 確保圖片不會超出容器寬度 */
+    height: auto; /* 保持圖片的原始長寬比 */
+    border-radius: 8px; /* 加上圓角讓外觀更柔和 */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* 加上細微的陰影 */
+}
+
+/* 自我介紹詳細文字的樣式 */
+.page-portal .intro-details {
+    background-color: rgba(255, 255, 255, 0.5); /* 白色背景，透明度 0.5 */
+    border-radius: 8px; /* 加上圓角讓卡片更好看 */
+    padding: 20px; /* 增加內邊距，讓文字和邊框有呼吸空間 */
+    margin-top: 30px; /* 與上方的標籤文字隔開 */
+    text-align: center; /* 【修改】文字置中 */
+    color: #000000; /* 【修改】文字顏色為黑色 */
+}
+
+/* 針對詳細文字區塊內的段落，設定段落間距 */
+.page-portal .intro-details p {
+    margin-top: 0;
+    margin-bottom: 1.5em; /* 讓每個段落之間有 1 個字高的空隙 */
+}
+
+/* 移除最後一個段落的下邊距，讓排版更整潔 */
+.page-portal .intro-details p:last-child {
+    margin-bottom: 0;
+}
+
+/* === 3. TRPG 角色列表頁 (trpg.html) 專屬樣式 === */
+/* 【新增】列表標題和返回按鈕的容器樣式 */
+.page-trpg-list .list-header {
+    display: flex; /* 啟用 Flexbox 佈局 */
+    justify-content: space-between; /* 【關鍵】將子元素推向兩端 */
+    align-items: center; /* 讓標題和按鈕在垂直方向上對齊 */
+    max-width: 1200px; /* 與下方的角色列表容器寬度保持一致 */
+    margin: 0 auto 30px auto; /* 置中並與下方列表隔開 */
+    padding: 0 10px; /* 在小螢幕時增加一點內邊距，避免貼邊 */
+}
+
+/* 列表標題的樣式 (可以保持你原本 h2 的樣式，這裡只是確保它不會有不必要的邊距) */
+.page-trpg-list .list-header h2 {
+    margin: 0; /* 移除 h2 預設的 margin，讓 Flexbox 能更好地對齊 */
+    font-size: 1.8em;
+    color: #4a4a4a;
+    border-bottom: 2px solid #957a2f;
+    padding-bottom: 10px;
+}
+
+/* 【新增】回到首頁按鈕的樣式 */
+.page-trpg-list .home-button {
+    display: inline-block;
+    padding: 8px 18px;
+    background-color: #4a5568;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 0.9em;
+    font-weight: bold;
+    white-space: nowrap; /* 防止按鈕文字在空間不足時換行 */
+    transition: background-color 0.3s;
+}
+
+.page-trpg-list .home-button:hover {
+    background-color: #2d3748;
+}
+
+.page-trpg-list .character-sheet {
     max-width: 70%;
     margin: 0 auto;
     background-color: #fff;
@@ -18,174 +170,87 @@ body {
     overflow: hidden; /* 確保子元素的圓角不會超出 */
 }
 
-/* 頂部標頭 */
-header {
-    background-color: #e0be5f;
-    color: #4a4a4a;
-    padding: 10px;
-    text-align: center;
-}
-
-.char-name {
-    font-size: 2.5em;
-    font-weight: bold;
-}
-
-.player-info {
-    font-size: 1em;
-    opacity: 0.8;
-}
-
 /* 主要內容區域 */
-main {
+.page-trpg-list main {
     padding: 25px;
 }
 
 /* 區塊標題 */
-h2 {
+.page-trpg-list h2 {
     font-size: 1.8em;
     color: #4a4a4a;
     border-bottom: 2px solid #957a2f;
     padding-bottom: 10px;
     margin-bottom: 15px;
 }
-
-/* === 角色詳細頁面的樣式修改 === */
-
-/* 新增：角色片假名的樣式 */
-.char-katakana {
-    font-size: 1.2em;
-    color: #e2e8f0; /* 使用一個比純白稍暗的顏色，增加層次感 */
-    opacity: 0.9;
-    margin-top: 5px; /* 和中文名字之間拉開一點距離 */
-    font-family: 'Noto Sans JP', sans-serif; /* 如果想用日文字體可以加上 */
-}
-
-/* 修改：個人簡介區塊的容器 */
-.profile {
-    display:flex;
-    flex-wrap: wrap; /* 在小螢幕時允許換行 */
-    gap: 80px;
-    margin-bottom: 20px;
-}
-
-/* 修改：角色立繪的圖片容器 */
-.char-image {
-    /* 讓圖片容器有彈性，但最大不會超過圖片寬度 */
-    flex: 1 1 250px;
-    text-align: center /* 讓圖片在容器內置中 */
-}
-
-/* 修改：角色立繪圖片本身的樣式 */
-.char-image img {
-    max-width: 20%; /* 圖片最寬不會超過其容器 */
-    height: auto; /* 高度自動，以保持圖片原始比例 */
-    object-fit: cover;
-    border-radius: 8px; /* 【關鍵修改】從 50% 改成 8px，變成圓角矩形 */
-    border: 3px solid #718096;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* 加一點陰影讓圖片更立體 */
-}
-
-
-
-.char-bio {
-    flex: 1;
-}
-
-/* 屬性和技能列表 */
-.stats ul, .skills ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.stats li {
-    background-color: #edf2f7;
-    margin-bottom: 8px;
+/* 頂部標頭 */
+.page-trpg-list header {
+    background-color: #e0be5f;
+    color: #4a4a4a;
     padding: 10px;
-    border-radius: 4px;
-    display: flex;
-    justify-content: space-between;
+    text-align: center;
+}
+.page-trpg-list .char-name {
+    font-size: 2.5em;
+    font-weight: bold;
 }
 
-.skills li {
-    background-color: #edf2f7;
-    margin-bottom: 8px;
-    padding: 10px;
-    border-radius: 4px;
+.page-trpg-list .player-info {
+    font-size: 1em;
+    opacity: 0.8;
 }
-
-/* 背景故事 */
-.story p {
-    text-indent: 2em; /* 段落開頭縮排 */
-}
-
-/* === 全新的角色列表翻轉卡片樣式 === */
-
-/* 列表容器 (ul) - Flexbox 網格佈局 */
-.character-list ul {
+.page-trpg-list .character-list ul {
     list-style: none;
     padding: 0;
     display: flex;
     flex-wrap: wrap;
-    gap: 25px; /* 加大一點間距 */
+    gap: 25px;
     justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
 }
-
-/* 每個列表項目 (li) - 計算寬度以實現一列四個 */
-.character-list li {
+.page-trpg-list .character-list li {
     width: calc(25% - 25px);
-    position: relative; /* 為 z-index 生效提供定位上下文 */
-    transition: transform 0.3s ease; /* 為下面的放大效果增加平滑過渡 */
+    position: relative;
+    transition: transform 0.3s ease;
 }
-
-/* 【新增】當滑鼠懸停在 li 上時，提升其層級並稍微放大 */
-.character-list li:hover {
-    transform: scale(1); /* 讓卡片稍微放大，感覺更突出 */
-    z-index: 10; /* 將層級提升到最高，蓋過其他卡片 */
+.page-trpg-list .character-list li:hover {
+    transform: scale(1.05); /* 恢復放大效果 */
+    z-index: 10;
 }
-
-/* 翻轉卡片最外層容器 */
-.flip-card {
+.page-trpg-list .flip-card {
     background-color: transparent;
     width: 100%;
-    height: 250px; /* 【重要】給卡片一個固定的高度 */
-    perspective: 1000px; /* 建立 3D 透視效果，這個值越大，3D 效果越不明顯 */
+    height: 250px;
+    perspective: 1000px;
 }
-
-/* 內部翻轉的容器 */
-.flip-card-inner {
+.page-trpg-list .flip-card-inner {
     position: relative;
     width: 100%;
     height: 100%;
-    transition: transform 0.7s; /* 翻轉動畫的持續時間 */
-    transform-style: preserve-3d; /* 啟用 3D 空間 */
+    transition: transform 0.7s;
+    transform-style: preserve-3d;
 }
-
-/* 🚨 當滑鼠懸停在 .flip-card 上時，翻轉 .flip-card-inner */
-.flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg); /* 沿著 Y 軸翻轉 180 度 */
+.page-trpg-list .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
 }
-
-/* 正面和背面的通用樣式 */
-.flip-card-front, .flip-card-back {
+.page-trpg-list .flip-card-front, .page-trpg-list .flip-card-back {
     position: absolute;
     width: 100%;
     height: 100%;
-    -webkit-backface-visibility: hidden; /* Safari 瀏覽器支援 */
-    backface-visibility: hidden; /* 【關鍵】隱藏元素的背面，這是實現翻轉效果的核心 */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-
-/* 正面樣式 */
-.flip-card-front {
+.page-trpg-list .flip-card-front {
     background-color: #e0be5fbe;
     color: #4a4a4a;
 }
-.flip-card-front img {
+.page-trpg-list .flip-card-front img {
     width: 120px;
     height: 120px;
     border-radius: 50%;
@@ -193,29 +258,28 @@ h2 {
     border: 3px solid #cbd5e0;
     margin-bottom: 10px;
 }
-.flip-card-front span {
+.page-trpg-list .flip-card-front span {
     font-weight: bold;
     font-size: 1.1em;
 }
-
-/* 背面樣式 */
-.flip-card-back {
-    background-color: #e0be5f; /* 給背面一個深色背景 */
+.page-trpg-list .flip-card-back {
+    background-color: #e0be5f;
     color: #4a4a4a;
     padding: 20px;
-    transform: rotateY(180deg); /* 【關鍵】讓背面一開始就預先翻轉 180 度 */
+    transform: rotateY(180deg);
 }
-.flip-card-back h2 {
+.page-trpg-list .flip-card-back h2 {
     font-size: 1.3em;
     border-bottom: 1px solid #718096;
     padding-bottom: 5px;
     margin-bottom: 10px;
+    color: #4a4a4a;
 }
-.flip-card-back p {
+.page-trpg-list .flip-card-back p {
     font-size: 0.9em;
     text-align: center;
 }
-.details-button {
+.page-trpg-list .details-button {
     margin-top: 15px;
     padding: 8px 15px;
     background-color: #f7fafc;
@@ -225,24 +289,104 @@ h2 {
     font-size: 0.9em;
     transition: background-color 0.3s;
 }
-.details-button:hover {
+.page-trpg-list .details-button:hover {
     background-color: #cbd5e0;
 }
-
-
-/* 響應式設計：小螢幕時變為一列兩個 */
 @media (max-width: 768px) {
-    .character-list li {
+    .page-trpg-list .character-list li {
         width: calc(50% - 25px);
     }
 }
 
-/* === 共通導覽列樣式 === */
-.main-nav {
+
+/* === 4. 角色詳細頁 (characters/*.html) 專屬樣式 === */
+.page-character-sheet .character-sheet {
     max-width: 800px;
-    margin: 0 auto 15px auto; /* 上0, 左右自動, 下15px */
+    margin: 0 auto;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+.page-character-sheet header {
+    background-color: #e0be5f;
+    color: #4a4a4a;
+    padding: 20px;
+    text-align: center;
+}
+.page-character-sheet .char-name {
+    font-size: 2.5em;
+    font-weight: bold;
+}
+.page-character-sheet .char-katakana {
+    font-size: 1.2em;
+    color: #6d6d6d;
+    opacity: 0.9;
+    margin-top: 5px;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+.page-character-sheet .player-info {
+    font-size: 1em;
+    opacity: 0.8;
+}
+.page-character-sheet main {
+    padding: 25px;
+}
+.page-character-sheet h2 {
+    font-size: 1.8em;
+    color: #4a4a4a;
+    border-bottom: 2px solid #957a2f;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+.page-character-sheet .profile {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 20px;
+    align-items: flex-start;
+}
+.page-character-sheet .char-image {
+    flex: 1 1 250px;
+    text-align: center;
+}
+.page-character-sheet .char-image img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 3px solid #718096;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.page-character-sheet .char-bio {
+    flex: 2 1 400px;
+}
+.page-character-sheet .stats ul, .page-character-sheet .skills ul {
+    list-style-type: none;
+    padding: 0;
+}
+.page-character-sheet .stats li, .page-character-sheet .skills li {
+    background-color: #edf2f7;
+    margin-bottom: 8px;
+    padding: 10px;
+    border-radius: 4px;
+}
+.page-character-sheet .stats li {
+    display: flex;
+    justify-content: space-between;
+}
+.page-character-sheet .story p {
+    text-indent: 2em;
 }
 
+
+/* === 5. 共通組件 (Components) 樣式 === */
+.main-nav {
+    max-width: 600px;
+    margin: 0 auto 16px auto;
+    background-color: #000000;
+}
 .back-button {
     display: inline-block;
     padding: 8px 15px;
@@ -253,7 +397,6 @@ h2 {
     font-size: 0.9em;
     transition: background-color 0.3s;
 }
-
 .back-button:hover {
     background-color: #856b22;
 }
