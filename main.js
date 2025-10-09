@@ -73,24 +73,22 @@ document.addEventListener("DOMContentLoaded", function() {
                 characterListContainer.innerHTML = "<p style='color:red;'>角色資料載入失敗！請檢查 console 裡的錯誤訊息。</p>";
             });
     }
-    // --- 【新增】任務三：載入共通頁尾 ---
-    const footerPlaceholder = document.getElementById("footer-placeholder");
-    if (footerPlaceholder) {
-        
-        // 【關鍵】判斷當前頁面在哪個目錄，以決定正確的 fetch 路徑
-        let path = '_includes/footer.html'; // 預設路徑 (給 index.html, trpg.html)
-        if (window.location.pathname.includes('/characters/')) {
-            path = '../_includes/footer.html'; // 給 characters/ 子目錄下的頁面
-        }
+    // --- 任務三：載入共通頁尾 ---
+const footerPlaceholder = document.getElementById("footer-placeholder");
+if (footerPlaceholder) {
+    
+    // 直接使用絕對路徑，不再需要判斷
+    const path = '/_includes/footer.html'; 
 
-        fetch(path)
-            .then(response => response.ok ? response.text() : Promise.reject('Failed to load footer'))
-            .then(data => {
-                footerPlaceholder.innerHTML = data;
-            })
-            .catch(error => {
-                console.error('Error fetching footer:', error);
-                footerPlaceholder.innerHTML = "<p style='text-align:center; color:red;'>頁尾載入失敗！</p>";
-            });
-    }
+    fetch(path)
+        .then(response => response.ok ? response.text() : Promise.reject('Failed to load footer'))
+        .then(data => {
+            footerPlaceholder.innerHTML = data;
+        })
+        .catch(error => {
+            console.error('Error fetching footer:', error);
+            footerPlaceholder.innerHTML = "<p style='text-align:center; color:red;'>頁尾載入失敗！</p>";
+        });
+}
+
 });
