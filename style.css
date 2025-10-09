@@ -96,25 +96,66 @@ h2 {
     text-indent: 2em; /* 段落開頭縮排 */
 }
 
-/* 角色列表的樣式 */
+/* === 新增的角色列表網格樣式 === */
+
+/* 列表容器 (ul) - 設定為 Flexbox 佈局 */
 .character-list ul {
-    list-style: none;
+    list-style: none; /* 移除列表前面的小黑點 */
     padding: 0;
+    display: flex; /* 啟用 Flexbox 佈局 */
+    flex-wrap: wrap; /* 允許項目換行 */
+    gap: 20px; /* 設定項目之間的間距 */
+    justify-content: center; /* 當一行未滿時，讓項目置中 */
 }
 
+/* 每個列表項目 (li) - 計算寬度以實現一列四個 */
+.character-list li {
+    /* 100% / 4 = 25%。再減去一些空間給 gap */
+    width: calc(25% - 20px);
+}
+
+/* 連結區塊 (a) - 讓它成為內容的容器 */
 .character-list li a {
-    display: block;
-    padding: 15px;
-    background-color: #edf2f7;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    text-decoration: none;
+    display: flex; /* 再次使用 Flexbox，但這次是為了內部垂直排列 */
+    flex-direction: column; /* 將排列方向改為垂直 (從上到下) */
+    align-items: center; /* 水平置中 (頭像和名字) */
+    text-decoration: none; /* 移除連結底線 */
     color: #2d3748;
-    font-size: 1.2em;
-    transition: background-color 0.3s, transform 0.3s;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #edf2f7;
+    transition: transform 0.3s, box-shadow 0.3s;
+    height: 100%; /* 讓 a 填滿整個 li 的高度 */
 }
 
+/* 滑鼠懸停效果 */
 .character-list li a:hover {
-    background-color: #cbd5e0;
-    transform: translateX(5px);
+    transform: translateY(-5px); /* 向上移動一點 */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* 頭像圖片 (img) */
+.character-list img {
+    width: 120px; /* 設定頭像寬度 */
+    height: 120px; /* 設定頭像高度 */
+    border-radius: 50%; /* 讓圖片變成圓形 */
+    object-fit: cover; /* 如果圖片比例不對，會自動裁切覆蓋，而不是變形 */
+    border: 3px solid #cbd5e0;
+    margin-bottom: 10px; /* 圖片和名字之間的距離 */
+}
+
+/* 角色名稱 (span) */
+.character-list span {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+
+/* === 針對小螢幕的響應式設計 (可選，但強烈建議) === */
+/* 當螢幕寬度小於 768px (例如手機) 時 */
+@media (max-width: 768px) {
+    .character-list li {
+        /* 一行顯示兩個 */
+        width: calc(50% - 20px);
+    }
 }
