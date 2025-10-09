@@ -2,22 +2,35 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <title>我的角色們</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的跑團角色們</title>
+    <!-- 這個檔案在根目錄，所以路徑不需要改 -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <div class="character-sheet">
         <header>
-            <h1>我的角色們</h1>
+            <div class="char-name">我的跑團角色們</div>
+            <div class="player-info">
+                <span>記錄所有冒險的足跡</span>
+            </div>
         </header>
+
         <main>
-            <h2>角色列表</h2>
-            <ul>
-                <li><a href="character_a.html">艾拉·晨風</a></li>
-                <li><a href="character_b.html">角色B的名字</a></li>
-                <!-- 新增更多角色連結 -->
-            </ul>
+            <section class="character-list">
+                <h2>角色列表</h2>
+                <ul>
+                    <!-- 連結路徑需要指向 characters/ 資料夾 -->
+                    <li><a href="characters/ayla.html">艾拉·晨風 - 精靈遊俠</a></li>
+                    <li><a href="characters/boris.html">鮑里斯·鐵拳 - 矮人戰士</a></li>
+                    <li><a href="characters/celia.html">西莉亞·光語 - 人類牧師</a></li>
+                    <li><a href="characters/dante.html">但丁·影刃 - 半身人盜賊</a></li>
+                    <li><a href="characters/elara.html">伊拉拉·星詠 - 高等精靈法師</a></li>
+                </ul>
+            </section>
         </main>
     </div>
+
 </body>
 </html>

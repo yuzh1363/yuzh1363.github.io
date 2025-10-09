@@ -95,3 +95,26 @@ h2 {
 .story p {
     text-indent: 2em; /* 段落開頭縮排 */
 }
+
+/* 角色列表的樣式 */
+.character-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.character-list li a {
+    display: block;
+    padding: 15px;
+    background-color: #edf2f7;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #2d3748;
+    font-size: 1.2em;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.character-list li a:hover {
+    background-color: #cbd5e0;
+    transform: translateX(5px);
+}
