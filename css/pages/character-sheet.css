@@ -1,0 +1,156 @@
+/* css/pages/character-sheet.css */
+
+/* === 角色詳細頁 (character.html) 專屬樣式 === */
+
+/* 頁面 body 的標識，可以用來做一些頁面級的微調 */
+/* 你需要在 trpg/character.html 的 body 標籤上加上 class="page-character-sheet" */
+/*.page-character-sheet {
+     (可選) 如果需要特定的背景或設定 
+}*/
+
+
+/* 角色卡片主容器 */
+.character-sheet {
+    max-width: 900px; /* 稍微加寬以容納兩欄佈局 */
+    margin: 30px auto; /* 上下邊距 30px，左右置中 */
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    overflow: hidden; /* 確保子元素的圓角不會溢出 */
+}
+
+
+/* 頂部標頭區域 */
+.character-sheet header {
+    background-color: #4a5568; /* 使用一個沉穩的深色調 */
+    color: #ffffff;
+    padding: 25px 30px;
+    text-align: center;
+    border-bottom: 5px solid #e0be5f; /* 用你的主題色做點綴 */
+}
+
+.character-sheet #char-name {
+    font-size: 2.8em;
+    font-weight: bold;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.character-sheet #char-katakana {
+    font-size: 1.3em;
+    color: #e2e8f0;
+    opacity: 0.9;
+    margin-top: 8px;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+.character-sheet .player-info {
+    font-size: 0.9em;
+    opacity: 0.7;
+    margin-top: 15px;
+}
+
+
+/* 主要內容區域 */
+.character-sheet main {
+    padding: 30px;
+}
+
+
+/* --- 兩欄式佈局 --- */
+/* 個人簡介區 (包含立繪和簡介文字) */
+.profile {
+    display: flex;
+    flex-wrap: wrap; /* 在小螢幕時換行 */
+    gap: 30px;
+    margin-bottom: 40px;
+    align-items: flex-start; /* 頂部對齊 */
+    border-bottom: 1px solid #e2e8f0; /* 與下方區塊分隔 */
+    padding-bottom: 30px;
+}
+
+/* 左欄：角色立繪 */
+.char-image {
+    flex: 1 1 300px; /* 基礎寬度 300px，可縮放 */
+    text-align: center;
+}
+
+.char-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* 右欄：角色簡介文字 */
+.char-bio {
+    flex: 2 1 400px; /* 佔據更多空間，基礎寬度 400px */
+}
+
+
+/* 通用區塊標題 h2 */
+.character-sheet h2 {
+    font-size: 1.6em;
+    color: #2d3748;
+    border-bottom: 3px solid #e0be5f;
+    padding-bottom: 10px;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+
+/* 屬性列表 */
+#stats-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* 響應式網格 */
+    gap: 15px;
+}
+
+#stats-list li {
+    background-color: #f7fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 15px;
+    text-align: center;
+    font-size: 1.1em;
+}
+
+#stats-list li strong {
+    display: block; /* 讓屬性名和數值分開成兩行 */
+    font-size: 0.9em;
+    color: #718096;
+    margin-bottom: 5px;
+}
+
+
+/* 技能列表 */
+#skills-list {
+    list-style: none;
+    padding: 0;
+    display: flex; /* 使用 flex 佈局來排列標籤 */
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+#skills-list li {
+    background-color: #edf2f7;
+    color: #4a5568;
+    padding: 8px 15px;
+    border-radius: 20px; /* 圓角標籤效果 */
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
+
+/* 背景故事 */
+.story {
+    margin-top: 40px;
+}
+
+#story-content {
+    line-height: 1.8;
+    color: #333;
+    white-space: pre-wrap; /* 保留 JSON 中的換行符 */
+}

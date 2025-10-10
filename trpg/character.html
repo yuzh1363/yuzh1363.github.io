@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>角色卡 </title>
+    <!-- 基礎樣式 -->
+    <link rel="stylesheet" href="../css/base/global.css">
+
+    <!-- 元件樣式 -->
+    <link rel="stylesheet" href="../css/components/button.css">
+    <link rel="stylesheet" href="../css/components/navigation.css">
+    <link rel="stylesheet" href="../css/components/footer.css">
+
+    <!-- 頁面專屬樣式 -->
+    <link rel="stylesheet" href="../css/pages/character-sheet.css">
+</head>
+<body class="page-character-sheet">
+    <!-- 導覽列佔位符 -->
+    <div id="navbar-placeholder"></div>
+
+    <!-- 角色卡片主結構 -->
+    <div class="character-sheet">
+        <header>
+            <!-- 佔位符 -->
+            <div id="char-name" class="char-name">載入中...</div>
+            <div id="char-katakana" class="char-katakana"></div>
+            <div class="player-info">
+                <span>玩家: 你</span> | <span>系統: coc 6th</span>
+            </div>
+        </header>
+
+        <main>
+            <section class="profile">
+                <div class="char-image">
+                    <!-- 佔位符 -->
+                    <img id="char-image" src="" alt="角色立繪">
+                </div>
+                <div class="char-bio">
+                    <h2>角色簡介</h2>
+                    <!-- 佔位符 -->
+                    <p id="char-bio"></p>
+                </div>
+            </section>
+
+            <section class="stats">
+                <h2>屬性</h2>
+                <!-- 佔位符：這個 ul 會由 JS 動態填入 -->
+                <ul id="stats-list"></ul>
+            </section>
+
+            <section class="skills">
+                <h2>技能</h2>
+                <!-- 佔位符：這個 ul 會由 JS 動態填入 -->
+                <ul id="skills-list"></ul>
+            </section>
+
+            <section class="story">
+                <h2>背景故事</h2>
+                <!-- 佔位符 -->
+                <p id="story-content"></p>
+            </section>
+        </main>
+    </div>
+
+    <!-- 頁尾佔位符 -->
+    <div id="footer-placeholder"></div>
+
+    <!-- 【重要】引用 JS 的路徑是 ../main.js -->
+    <script src="../main.js" defer></script>
+</body>
+</html>

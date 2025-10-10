@@ -1,0 +1,81 @@
+/* === 3. TRPG 角色列表頁 (trpg.html) 專屬樣式 === */
+/* 【新增】列表標題和返回按鈕的容器樣式 */
+.page-trpg-list .list-header {
+    display: flex; /* 啟用 Flexbox 佈局 */
+    justify-content: space-between; /* 【關鍵】將子元素推向兩端 */
+    align-items: center; /* 讓標題和按鈕在垂直方向上對齊 */
+    max-width: 1200px; /* 與下方的角色列表容器寬度保持一致 */
+    margin: 0 auto 30px auto; /* 置中並與下方列表隔開 */
+    padding: 0 10px; /* 在小螢幕時增加一點內邊距，避免貼邊 */
+}
+
+/* 列表標題的樣式 (可以保持你原本 h2 的樣式，這裡只是確保它不會有不必要的邊距) */
+.page-trpg-list .list-header h2 {
+    margin: 0; /* 移除 h2 預設的 margin，讓 Flexbox 能更好地對齊 */
+    font-size: 1.8em;
+    color: #4a4a4a;
+    border-bottom: 2px solid #957a2f;
+    padding-bottom: 10px;
+}
+
+
+
+.page-trpg-list .character-sheet {
+    max-width: 70%;
+    margin: 0 auto;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden; /* 確保子元素的圓角不會超出 */
+}
+
+/* 主要內容區域 */
+.page-trpg-list main {
+    padding: 25px;
+}
+
+/* 區塊標題 */
+.page-trpg-list h2 {
+    font-size: 1.8em;
+    color: #4a4a4a;
+    border-bottom: 2px solid #957a2f;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+/* 頂部標頭 */
+.page-trpg-list header {
+    background-color: #e0be5f;
+    color: #4a4a4a;
+    padding: 10px;
+    text-align: center;
+}
+.page-trpg-list .char-name {
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+.page-trpg-list .player-info {
+    font-size: 1em;
+    opacity: 0.8;
+}
+.page-trpg-list .character-list ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.page-trpg-list .character-list li {
+    width: calc(25% - 25px);
+    position: relative;
+    transition: transform 0.3s ease;
+}
+.page-trpg-list .character-list li:hover {
+    transform: scale(1.05); /* 恢復放大效果 */
+    z-index: 10;
+}
+

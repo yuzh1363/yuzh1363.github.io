@@ -1,0 +1,33 @@
+/* === 1. 全域與基本樣式 (所有頁面共用) === */
+body {
+    font-family: 'Noto Sans TC', sans-serif;
+    background-color: #f4f1e9;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0; /* 使用 padding 來製造頁面邊距 */
+}
+
+
+.page-trpg-list {
+    padding: 20px;
+  }
+
+  @media (max-width: 768px) {
+    .page-trpg-list .character-list li {
+        width: calc(50% - 25px);
+    }
+}
+/* 在小螢幕上，讓所有內容都靠左對齊 */
+@media (max-width: 600px) {
+    .footer-content {
+        flex-direction: column;
+    }
+    .copyright {
+        text-align: left;
+        margin-top: 20px;
+    }
+    .page-portal .portal-container {
+        padding: 20px;
+      }
+}

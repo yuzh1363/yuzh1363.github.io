@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YY家的跑團集中</title>
+    <!-- 基礎樣式 -->
+    <link rel="stylesheet" href="../css/base/global.css">
+
+    <!-- 元件樣式 -->
+    <link rel="stylesheet" href="../css/components/button.css">
+    <link rel="stylesheet" href="../css/components/card.css">
+    <link rel="stylesheet" href="../css/components/footer.css">
+
+    <!-- 頁面專屬樣式 -->
+    <link rel="stylesheet" href="../css/pages/trpg-list.css">
+</head>
+<body class="page-trpg-list">
+    
+    <div class="character-sheet">
+        <header>
+            <div class="char-name">YY家的跑團集中</div>
+            <div class="player-info">
+                <span>記錄PC用的地方</span>
+            </div>
+        </header>
+
+        <main>
+            <section class="character-list">
+                <div class="list-header">
+                    <h2>角色列表</h2>
+                    <a href="../index.html" class="home-button">« 回到首頁</a>
+                </div>
+                
+                <ul id="character-list-container">
+                    <!-- 初始顯示載入中的提示 -->
+                    <p>正在載入角色資料...</p>
+                </ul>
+            </section>
+        </main>
+    </div>
+    <div id="footer-placeholder"></div>
+    <script src="../main.js" defer></script>
+</body>
+</html>

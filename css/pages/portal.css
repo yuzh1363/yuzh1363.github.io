@@ -1,0 +1,100 @@
+/* === 2. 入口頁 (Portal Page) 專屬樣式 === */
+.page-portal {
+    padding: 20px;
+}
+/* 你可以把你之前入口頁的所有樣式 (如 .portal-container, .profile-pic) 放在這裡 */
+/* 將 Flexbox 置中樣式應用到新的包裝層上 */
+.page-portal .portal-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 120px); /* 計算一個大致的高度，給頁首頁尾留空間 */
+    width: 100%;
+}
+/* 入口頁的主容器 */
+.page-portal .portal-container {
+    max-width: 600px;
+    width: 90%;
+    background-color: #e0be5f;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* 個人頭像 */
+.page-portal .profile-pic {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    margin-bottom: 15px;
+}
+
+/* 名字和自我介紹 */
+.page-portal .intro h1 {
+    font-size: 2em;
+    color: #2d3748;
+    margin-bottom: 10px;
+}
+
+.page-portal .intro p {
+    font-size: 1em;
+    color: #4a5568;
+    line-height: 1.5;
+    margin-bottom: 30px;
+}
+.page-portal .links {
+    margin-top: 30px; /* 確保按鈕區塊與上方有足夠的間距 */
+}
+
+/* 連結列表 */
+.page-portal .links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 30px 0; /* 在列表下方增加一些邊距，與圖片隔開 */
+    display: flex; /* 啟用 Flexbox */
+    justify-content: center; /* 讓按鈕在容器中水平置中 */
+    flex-wrap: wrap; /* 在小螢幕時如果空間不夠，允許按鈕換行 */
+    gap: 15px; /* 設定按鈕之間的間距 */
+}
+
+.page-portal .links li {
+    margin-bottom: 0; /* 移除原本的垂直邊距，因為 gap 已經處理了間距 */
+}
+
+
+/* 下方圖片的容器和樣式 */
+.page-portal .portal-image {
+    margin-top: 30px; /* 與上方按鈕區隔開 */
+}
+
+.page-portal .portal-image img {
+    max-width: 100%; /* 確保圖片不會超出容器寬度 */
+    height: auto; /* 保持圖片的原始長寬比 */
+    border-radius: 8px; /* 加上圓角讓外觀更柔和 */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* 加上細微的陰影 */
+}
+
+/* 自我介紹詳細文字的樣式 */
+.page-portal .intro-details {
+    background-color: rgba(255, 255, 255, 0.5); /* 白色背景，透明度 0.5 */
+    border-radius: 8px; /* 加上圓角讓卡片更好看 */
+    padding: 20px; /* 增加內邊距，讓文字和邊框有呼吸空間 */
+    margin-top: 30px; /* 與上方的標籤文字隔開 */
+    text-align: center; /* 【修改】文字置中 */
+    color: #000000; /* 【修改】文字顏色為黑色 */
+}
+
+/* 針對詳細文字區塊內的段落，設定段落間距 */
+.page-portal .intro-details p {
+    margin-top: 0;
+    margin-bottom: 1.5em; /* 讓每個段落之間有 1 個字高的空隙 */
+}
+
+/* 移除最後一個段落的下邊距，讓排版更整潔 */
+.page-portal .intro-details p:last-child {
+    margin-bottom: 0;
+}

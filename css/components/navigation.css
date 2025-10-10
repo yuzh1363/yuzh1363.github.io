@@ -1,0 +1,19 @@
+/* === 5. 共通組件 (Components) 樣式 === */
+.main-nav {
+    max-width: 600px;
+    margin: 0 auto 16px auto;
+    background-color: #000000;
+}
+.back-button {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: #4a5568;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 0.9em;
+    transition: background-color 0.3s;
+}
+.back-button:hover {
+    background-color: #856b22;
+}
