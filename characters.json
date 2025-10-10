@@ -26,7 +26,7 @@
     {
         "id": "04",
         "name": "藥師寺 蒼",
-        "katakana": "せんさい みどり",
+        "katakana": "やくしじ あおい",
         "imageUrl": "https://images.plurk.com/32BZghoAjhWf8AY5HM3MWe.png",
         "description": "殺殺生",
         "pageUrl": "characters/celia.html"
@@ -120,4 +120,5 @@
         "description": "鰯と柊 HO2 信者",
         "pageUrl": "characters/celia.html"
       }
+
   ]
