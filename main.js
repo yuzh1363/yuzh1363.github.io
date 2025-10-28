@@ -124,79 +124,103 @@ document.addEventListener("DOMContentLoaded", function() {
              .catch(error => console.error('Error fetching footer:', error));
      }
 
-// --- 【重構】任務五：載入並渲染跑團紀錄 ---
+// --- 【重構】任務五：載入並渲染跑團紀錄 (在 trpg/log.html 執行) ---
 const completedContainer = document.getElementById('completed-scenarios');
 const plannedContainer = document.getElementById('planned-scenarios');
 
+// 只有當頁面上存在這兩個容器時，才執行
 if (completedContainer && plannedContainer) {
-    console.log("任務五啟動：準備抓取跑團紀錄。");
 
-    const createCardHTML = (scenario) => { /* ... (這個函式保持不變) ... */ };
+    // 渲染單個卡片的函式 (保持不變)
+    const createCardHTML = (scenario) => {
+        return `
+            <div class="scenario-title">${scenario.name}</div>
+            <div class="scenario-details">
+                <!-- <span><strong>日期:</strong> ${scenario.date}</span> -->
+                <span><strong>系統:</strong> ${scenario.system}</span>
+                <span><strong>KP:</strong> ${scenario.kp}</span>
+                <span><strong>PC:</strong> ${scenario.pc.join(', ')}</span>
+            </div>
+            <!-- <div class="scenario-notes">${scenario.notes}</div> -->
+        `;
+    };
 
+    // 抓取 JSON 資料
     fetch('scenarios.json')
-        .then(response => {
-            console.log("Fetch 回應狀態:", response.status, response.statusText);
-            if (!response.ok) {
-                // 讓錯誤更明確
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.json();
-        })
+        .then(response => response.ok ? response.json() : Promise.reject('Scenarios JSON load failed'))
         .then(allScenarios => {
-            console.log("成功解析 JSON，收到的資料:", allScenarios);
-
-            // 【防禦性檢查 1】確認收到的資料是陣列
-            if (!Array.isArray(allScenarios)) {
-                throw new Error("JSON 檔案的根層級不是一個陣列 (Array)。");
-            }
-
+            
             // --- 1. 處理計畫中的劇本 (左欄) ---
-            const planned = allScenarios.filter(s => s && s.status === 'planned');
-            console.log("篩選出的計畫中劇本:", planned);
-            plannedContainer.innerHTML = ''; 
+            const planned = allScenarios.filter(s => s.status === 'planned');
+            plannedContainer.innerHTML = ''; // 清空
             if (planned.length > 0) {
-                // ... (渲染 planned 的程式碼) ...
+                planned.forEach(scenario => {
+                    const card = document.createElement('div');
+                    card.className = 'scenario-card';
+                    card.innerHTML = createCardHTML(scenario);
+                    plannedContainer.appendChild(card);
+                });
             } else {
                 plannedContainer.innerHTML = '<p>目前沒有計畫中的劇本。</p>';
             }
 
             // --- 2. 處理已完成的劇本 (右欄) ---
-            const completed = allScenarios.filter(s => s && s.status === 'completed');
-            console.log("篩選出的已完成劇本:", completed);
-            completedContainer.innerHTML = '';
+            const completed = allScenarios.filter(s => s.status === 'completed');
+            completedContainer.innerHTML = ''; // 清空
             
             if (completed.length > 0) {
-                // 【防禦性檢查 2】檢查 date 欄位是否存在
-                const validCompleted = completed.filter(s => s.date !== undefined && s.date !== null);
-                if(validCompleted.length !== completed.length) {
-                    console.warn("警告：部分已完成的劇本缺少 'date' 欄位。");
-                }
-
-                const groupedByYear = validCompleted.reduce((acc, scenario) => {
-                    const year = scenario.date;
+                // 按年份分組
+                const groupedByYear = completed.reduce((acc, scenario) => {
+                    const year = scenario.date; // 直接使用 date 欄位的值作為年份
                     if (!acc[year]) {
                         acc[year] = [];
                     }
                     acc[year].push(scenario);
                     return acc;
                 }, {});
-                console.log("按年份分組後的結果:", groupedByYear);
 
+                // 按年份從大到小排序
                 const sortedYears = Object.keys(groupedByYear).sort((a, b) => b - a);
-                console.log("排序後的年份:", sortedYears);
-                
+
+                // 遍歷排序後的年份，並生成 HTML
                 sortedYears.forEach(year => {
-                    // ... (渲染 completed 的程式碼) ...
+                    // 建立年份容器
+                    const yearGroup = document.createElement('div');
+                    yearGroup.className = 'year-group';
+
+                    // 建立年份標題
+                    const yearTitle = document.createElement('h3');
+                    yearTitle.className = 'year-title';
+                    yearTitle.textContent = year;
+                    
+                    // 建立該年份的劇本列表容器
+                    const yearList = document.createElement('div');
+                    yearList.className = 'completed-list';
+
+                    // 將該年份的所有劇本卡片加入列表
+                    groupedByYear[year].forEach(scenario => {
+                        const card = document.createElement('div');
+                        card.className = 'scenario-card';
+                        card.innerHTML = createCardHTML(scenario);
+                        yearList.appendChild(card);
+                    });
+                    
+                    // 將標題和列表組裝到年份容器中
+                    yearGroup.appendChild(yearTitle);
+                    yearGroup.appendChild(yearList);
+
+                    // 最後將整個年份容器加入到右欄的主容器中
+                    completedContainer.appendChild(yearGroup);
                 });
+
             } else {
                 completedContainer.innerHTML = '<p>目前沒有已通過的劇本。</p>';
             }
         })
         .catch(error => {
-            // 【關鍵】讓錯誤訊息顯示在頁面上
-            console.error('【錯誤】處理跑團紀錄時發生問題:', error);
-            completedContainer.innerHTML = `<p style="color:red; font-weight:bold;">紀錄載入失敗！</p><p style="color:red; font-size: 0.8em;">詳細錯誤請查看瀏覽器主控台 (F12)。</p>`;
-            plannedContainer.innerHTML = '';
+            console.error('Error fetching scenarios:', error);
+            completedContainer.innerHTML = '<p style="color:red;">紀錄載入失敗！</p>';
         });
 }
+
  });
