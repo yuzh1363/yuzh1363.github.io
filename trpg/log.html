@@ -29,19 +29,35 @@
             
                 <!-- 區塊一：計畫中的劇本 -->
                 <section id="planned-section" class="log-section">
-                    <h2>🗓️ 計畫中的劇本</h2>
+                    <h2>🗓️ 計畫中</h2>
                     <div id="planned-scenarios" class="scenario-list">
                         <p>載入中...</p>
                     </div>
                 </section>
         
-                <!-- 區塊二：已通過的劇本 -->
-                <section id="completed-section" class="log-section">
-                    <h2>✔ 已通過的劇本</h2>
-                    <div id="completed-scenarios">
-                        <p>載入中...</p>
-                    </div>
-                </section>
+                <!-- 右欄：已通過的劇本 -->
+<div class="log-content">
+    <section class="log-section">
+        <h2>✔ 已通過</h2>
+        
+        <!-- 【新增】頁籤系統的主容器 -->
+        <div id="tabs-container">
+            <!-- 頁籤按鈕將由 JS 動態生成並插入到這裡 -->
+            <ul class="tab-buttons" id="tab-buttons-list">
+                <!-- <li><button>2025</button></li> -->
+            </ul>
+            
+            <!-- 頁籤內容面板將由 JS 動態生成並插入到這裡 -->
+            <div class="tab-content" id="tab-content-panels">
+                <!-- <div class="tab-panel">...卡片...</div> -->
+            </div>
+        </div>
+
+        <!-- 移除舊的容器，用新的頁籤容器取代 -->
+        <!-- <div id="completed-scenarios"></div> -->
+
+    </section>
+</div>
         
             </div> <!-- .log-main-layout 結束 -->
         </main>
