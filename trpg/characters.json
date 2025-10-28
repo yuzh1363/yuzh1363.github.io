@@ -284,5 +284,62 @@
           "魅力": 13
         },
       "skills": ["潛行", "察覺", "生存", "箭術", "自然"]
+      },
+      {
+        "id": "amano",
+        "name": "青海川 天野",
+        "katakana": "おうみがわ あまの",
+        "imageUrl": "",
+        "description": "肥皂學校2陣 HO3 老師講話很溫柔",
+        "fullImageUrl": "https://images.plurk.com/2wzeCv7xF398qoBIAdfTXY.png ", 
+      "bio": "艾拉是一位身手矯健的精靈遊俠...", 
+      "story": "艾拉的家鄉在一次神秘的魔法災變中被摧毀...", 
+      "stats": {
+          "力量": 12,
+          "敏捷": 18,
+          "體質": 14,
+          "智力": 15,
+          "智慧": 16,
+          "魅力": 13
+        },
+      "skills": ["潛行", "察覺", "生存", "箭術", "自然"]
+      },
+      {
+        "id": "shuchuo",
+        "name": "日下部 守澄",
+        "katakana": "くさかべ しゅちょう",
+        "imageUrl": "",
+        "description": "細冰的孩子 HO3",
+        "fullImageUrl": "https://images.plurk.com/2wzeCv7xF398qoBIAdfTXY.png ", 
+      "bio": "艾拉是一位身手矯健的精靈遊俠...", 
+      "story": "艾拉的家鄉在一次神秘的魔法災變中被摧毀...", 
+      "stats": {
+          "力量": 12,
+          "敏捷": 18,
+          "體質": 14,
+          "智力": 15,
+          "智慧": 16,
+          "魅力": 13
+        },
+      "skills": ["潛行", "察覺", "生存", "箭術", "自然"]
+      },
+      {
+        "id": "vanio",
+        "name": "凡尼珥",
+        "katakana": "ヴァニル",
+        "imageUrl": "",
+        "description": "冰淇淋商人",
+        "fullImageUrl": "https://images.plurk.com/2wzeCv7xF398qoBIAdfTXY.png ", 
+      "bio": "艾拉是一位身手矯健的精靈遊俠...", 
+      "story": "艾拉的家鄉在一次神秘的魔法災變中被摧毀...", 
+      "stats": {
+          "力量": 12,
+          "敏捷": 18,
+          "體質": 14,
+          "智力": 15,
+          "智慧": 16,
+          "魅力": 13
+        },
+      "skills": ["潛行", "察覺", "生存", "箭術", "自然"]
       }
   ]
