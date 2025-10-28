@@ -97,21 +97,6 @@
 
     /* --- 右欄：已完成劇本的專屬樣式 --- */
 
-/* 【新增】年份分組的容器 */
-.year-group {
-    margin-bottom: 40px;
-}
-
-/* 【新增】年份標題 */
-.year-title {
-    font-size: 1.8em;
-    font-weight: bold;
-    color: #2d3748;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid #e2e8f0;
-}
-
 /* 【新增】年份內部的劇本列表 */
 .completed-list {
     display: grid;
@@ -121,7 +106,7 @@
 
 /* ... (保留 .scenario-card 和其子元素的樣式，它們是通用的) ... */
 
-/* 【新增】回到首頁按鈕的樣式 */
+/* 【新增】回到角色集中按鈕的樣式 */
 .page-trpg-log .character-button {
     display: inline-block;
     padding: 8px 18px;
@@ -137,6 +122,66 @@
 
 .page-trpg-log .character-button:hover {
     background-color: #2d3748;
+}
+
+/* --- 【新增】頁籤系統樣式 --- */
+
+/* 頁籤按鈕列表 */
+.tab-buttons {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.tab-buttons li {
+    margin-bottom: -2px; /* 讓選中按鈕的邊框能蓋過底線 */
+}
+
+/* 頁籤按鈕 */
+.tab-button {
+    padding: 10px 20px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 500;
+    color: #718096;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.tab-button:hover {
+    color: #2d3748;
+}
+
+/* 當前選中的頁籤按鈕樣式 */
+.tab-button.active {
+    color: #2d3748;
+    font-weight: bold;
+    border-bottom-color: #e0be5f; /* 使用你的主題色 */
+}
+
+
+/* 頁籤內容面板 */
+.tab-panel {
+    display: none; /* 預設隱藏所有面板 */
+}
+
+/* 當前顯示的內容面板 */
+.tab-panel.active {
+    display: block;
+}
+
+
+/* 每個面板內的劇本列表 (與之前類似) */
+.completed-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
 }
 
 /* 響應式設計：在小螢幕上，重新定義網格佈局為單欄堆疊 */
