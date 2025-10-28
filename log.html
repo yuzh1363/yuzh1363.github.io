@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的跑團紀錄</title>
+    <!-- 引用基礎和元件 CSS -->
+     <!-- 元件樣式 -->
+    <link rel="stylesheet" href="../css/components/button.css">
+    <link rel="stylesheet" href="../css/base/global.css">
+    <link rel="stylesheet" href="../css/components/footer.css">
+    <!-- 【新增】引用本頁專屬的 CSS -->
+    <link rel="stylesheet" href="../css/pages/trpg-log.css">
+</head>
+<body class="page-trpg-log">
+
+    <div class="log-container">
+        <header>
+            <h1>我的跑團紀錄</h1>
+            <div class="log-button">
+                <a href="../index.html" class="home-button">回到首頁</a>
+                <a href="index.html" class="character-button">回角色列表</a>
+            </div>
+        </header>
+
+        <main>
+            <!-- 【修改】現在這是一個純粹的 Grid 容器 -->
+            <div class="log-main-layout">
+            
+                <!-- 區塊一：計畫中的劇本 -->
+                <section id="planned-section" class="log-section">
+                    <h2>🗓️ 計畫中的劇本</h2>
+                    <div id="planned-scenarios" class="scenario-list">
+                        <p>載入中...</p>
+                    </div>
+                </section>
+        
+                <!-- 區塊二：已通過的劇本 -->
+                <section id="completed-section" class="log-section">
+                    <h2>✔ 已通過的劇本</h2>
+                    <div id="completed-scenarios">
+                        <p>載入中...</p>
+                    </div>
+                </section>
+        
+            </div> <!-- .log-main-layout 結束 -->
+        </main>
+    </div>
+
+    <!-- 頁尾佔位符 
+    <div id="footer-placeholder"></div>-->
+    <!-- 引用 JS -->
+    <script src="../main.js" defer></script>
+</body>
+</html>
