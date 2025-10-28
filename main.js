@@ -123,4 +123,80 @@ document.addEventListener("DOMContentLoaded", function() {
              .then(data => { footerPlaceholder.innerHTML = data; })
              .catch(error => console.error('Error fetching footer:', error));
      }
+
+// --- 【重構】任務五：載入並渲染跑團紀錄 ---
+const completedContainer = document.getElementById('completed-scenarios');
+const plannedContainer = document.getElementById('planned-scenarios');
+
+if (completedContainer && plannedContainer) {
+    console.log("任務五啟動：準備抓取跑團紀錄。");
+
+    const createCardHTML = (scenario) => { /* ... (這個函式保持不變) ... */ };
+
+    fetch('scenarios.json')
+        .then(response => {
+            console.log("Fetch 回應狀態:", response.status, response.statusText);
+            if (!response.ok) {
+                // 讓錯誤更明確
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(allScenarios => {
+            console.log("成功解析 JSON，收到的資料:", allScenarios);
+
+            // 【防禦性檢查 1】確認收到的資料是陣列
+            if (!Array.isArray(allScenarios)) {
+                throw new Error("JSON 檔案的根層級不是一個陣列 (Array)。");
+            }
+
+            // --- 1. 處理計畫中的劇本 (左欄) ---
+            const planned = allScenarios.filter(s => s && s.status === 'planned');
+            console.log("篩選出的計畫中劇本:", planned);
+            plannedContainer.innerHTML = ''; 
+            if (planned.length > 0) {
+                // ... (渲染 planned 的程式碼) ...
+            } else {
+                plannedContainer.innerHTML = '<p>目前沒有計畫中的劇本。</p>';
+            }
+
+            // --- 2. 處理已完成的劇本 (右欄) ---
+            const completed = allScenarios.filter(s => s && s.status === 'completed');
+            console.log("篩選出的已完成劇本:", completed);
+            completedContainer.innerHTML = '';
+            
+            if (completed.length > 0) {
+                // 【防禦性檢查 2】檢查 date 欄位是否存在
+                const validCompleted = completed.filter(s => s.date !== undefined && s.date !== null);
+                if(validCompleted.length !== completed.length) {
+                    console.warn("警告：部分已完成的劇本缺少 'date' 欄位。");
+                }
+
+                const groupedByYear = validCompleted.reduce((acc, scenario) => {
+                    const year = scenario.date;
+                    if (!acc[year]) {
+                        acc[year] = [];
+                    }
+                    acc[year].push(scenario);
+                    return acc;
+                }, {});
+                console.log("按年份分組後的結果:", groupedByYear);
+
+                const sortedYears = Object.keys(groupedByYear).sort((a, b) => b - a);
+                console.log("排序後的年份:", sortedYears);
+                
+                sortedYears.forEach(year => {
+                    // ... (渲染 completed 的程式碼) ...
+                });
+            } else {
+                completedContainer.innerHTML = '<p>目前沒有已通過的劇本。</p>';
+            }
+        })
+        .catch(error => {
+            // 【關鍵】讓錯誤訊息顯示在頁面上
+            console.error('【錯誤】處理跑團紀錄時發生問題:', error);
+            completedContainer.innerHTML = `<p style="color:red; font-weight:bold;">紀錄載入失敗！</p><p style="color:red; font-size: 0.8em;">詳細錯誤請查看瀏覽器主控台 (F12)。</p>`;
+            plannedContainer.innerHTML = '';
+        });
+}
  });
