@@ -289,24 +289,33 @@
       },
       {
         "id": "coc033",
-        "name": "複製人的葬列",
-        "system": "CoC 7th",
-        "kp": ".",
+        "name": "廃スクール・ウォーカーズ",
+        "system": "CoC 6th",
+        "kp": "啊咖哩",
         "date": "計畫中",
-        "pc": ["東雲 夏明"],
+        "pc": ["五十嵐 有也"],
         "status": "planned"
       },
       {
         "id": "coc034",
-        "name": "在完美結局後",
-        "system": "CoC 6th",
-        "kp": "阿咖哩",
+        "name": "林中古宅",
+        "system": "CoC 7th",
+        "kp": "白白",
         "date": "計畫中",
         "pc": ["待定"],
         "status": "planned"
       },
       {
         "id": "coc035",
+        "name": "GODARCA",
+        "system": "CoC 6th",
+        "kp": "幸太",
+        "date": "計畫中",
+        "pc": ["待定"],
+        "status": "planned"
+      },
+      {
+        "id": "coc036",
         "name": "12星座館殺人事件",
         "system": "CoC 6th",
         "kp": "ㄇㄇ",
@@ -315,10 +324,19 @@
         "status": "planned"
       },
       {
-        "id": "coc036",
-        "name": "GODARCA",
+        "id": "coc037",
+        "name": "複製人的葬列",
+        "system": "CoC 7th",
+        "kp": "糰子",
+        "date": "計畫中",
+        "pc": ["東雲 夏明"],
+        "status": "planned"
+      },
+      {
+        "id": "coc038",
+        "name": "在完美結局後",
         "system": "CoC 6th",
-        "kp": "幸太",
+        "kp": "阿咖哩",
         "date": "計畫中",
         "pc": ["待定"],
         "status": "planned"
